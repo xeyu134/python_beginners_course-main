@@ -13,3 +13,15 @@ if my_string.isdigit():
     print(my_integer)
 else:
     print(f"{my_string} is not a number")
+
+
+'''
+str format method python: https://www.digitalocean.com/community/tutorials/how-to-use-string-formatters-in-python-3
+Удобный способ форматирования, когда мы не знаем зарание название перменных,
+которые будем подставлять
+'''
+
+'''
+percent formatting python: https://www.digitalocean.com/community/tutorials/how-to-use-string-formatters-in-python-3
+Еще один способ форматирования, но он не красивый.
+'''

@@ -1,16 +1,27 @@
+'''
+Область видимости переменных
+'''
+
 def my_function():
-    local_var = "I'm a local variable"
+    local_var = "I'm a local variable"  # Существует только внутри ф-ции
     print(local_var)
 
 
 my_function()  # Outputs: "I'm a local variable"
 # print(local_var)  # This will raise an error because local_var is not defined outside the function
 
+'''
+Пример плохого, но рабочего варианта
+'''
+
 for i in range(3):
     print(i)
 
 print(i)  # Outputs: 2, but it's bad to use it after the loop
 
+'''
+Пример хороший
+'''
 
 global_var = "I'm a global variable"
 
@@ -32,10 +43,14 @@ def my_function():
 
 
 my_function()
-print(global_var)  # Outputs: "I'm a global variable"
+print(global_var)  # Outputs: "I'm a global variable".
+# То есть глобально переменная не изменилась за пределами ф-ции.
 
+'''
+Глобальными переменами обычно делают константы
+'''
 
-COMFORTABLE_TEMPERATURE = 25
+COMFORTABLE_TEMPERATURE = 25  # CPSLOCK - константа
 
 
 def get_diff_from_comfortable_temperature(*, temperature: int) -> int:
@@ -43,26 +58,34 @@ def get_diff_from_comfortable_temperature(*, temperature: int) -> int:
 
 print(get_diff_from_comfortable_temperature(temperature=20))  # Outputs: 5
 
+'''
+Пример абсолютного зла: когда константу (глобальную переменную) в коде меняют
+'''
 
 global_var = "I'm a global variable"
 
 
 def my_function():
-    global global_var
+    global global_var  # Ф-ция global объявляет, что global_var - глобальная переменная.
     global_var = "I've defined inside the scope of my_function"
 
 
 print(global_var)  # Outputs: "I'm a global variable"
-my_function()
+# Глобальная переменная не изменилась, так как мы еще не запустили ф-цию my_function()
+my_function()  # А вот теперь запустили.
 print(global_var)  # Outputs: "I've defined inside the scope of my_function"
 
+'''
+Пример хороший для закрепления
+'''
 
 DEFAULT_LEVEL_EXPERIENCE = 200
 
 
-def is_leveled_up(*, current_experience: int, gained_experience: int):
+def is_leveled_up(*, current_experience: int, gained_experience: int) -> bool:
     total_experience = current_experience + gained_experience
-    level_up = False
+    level_up = False  # задали переменную внутри ф-ции с дефотным значением,
+    # которое может поменяться в будущем.
     if total_experience >= DEFAULT_LEVEL_EXPERIENCE:
         level_up = True
 
