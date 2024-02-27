@@ -1,3 +1,7 @@
+'''
+Сравнение словарей
+'''
+
 person = {
     "name": "John",
     "age": 30,
@@ -9,3 +13,4 @@ other_person = {
     "name": "John",
 }
 print(person == other_person)  # Outputs: True
+# Сравниваются ключи, их значения и кол-во.
