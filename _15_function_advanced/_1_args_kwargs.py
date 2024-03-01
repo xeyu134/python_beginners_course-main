@@ -1,4 +1,4 @@
-def add_all(*args):
+def add_all(*args):  # Используем, когда надо передать несколько переменных. Тип - turple.
     summary = 0
     for num in args:
         summary += num
@@ -11,11 +11,12 @@ print(add_all(1, 2, 3, 4, 5))  # Outputs: 15
 values = [1, 2, 3, 4, 5]
 other_values = [6, 7, 8, 9, 10]
 
-print(add_all(*values))  # Outputs: 15
+print(add_all(*values))  # Outputs: 15.
+# Важно использовать переменную со звездочкой, чтобы код понял, что это именно переменная, а не значение.
 print(add_all(*values, *other_values))  # Outputs: 55
 
 
-def introduce(**kwargs):
+def introduce(**kwargs):  # Это когда надо передать ключи и значения. Тип - словарь
     for key, value in kwargs.items():
         print(key)
         print(value)
@@ -29,7 +30,7 @@ person = {
     "name": "John",
 }
 
-introduce(**person)
+introduce(**person)  # Кавычки обязательны. Мы передаем не ключи и значения, а переменную, которая содержит эти данные.
 
 
 def func_with_all_arguments(x: int, y: int, *args, value: int = 6, **kwargs):

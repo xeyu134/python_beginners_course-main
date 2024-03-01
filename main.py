@@ -1,12 +1,4 @@
-def introduce (**kwargs):
-    for key, value in kwargs.items():
-        print(key)
-        print(value)
-
-person = {
-    "city": "New York",
-    "age": 30,
-    "name": "John",
-}
-
-introduce(**person)
+from _17_import.math_operations import add, subtract
+# Из папки '_17_import' импортируем модуль 'operations'
+print(add(1, 2))
+print(subtract(5, 3))
