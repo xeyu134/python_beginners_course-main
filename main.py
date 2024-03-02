@@ -1,28 +1,18 @@
-import requests  # импортировали библиотеку requests для получения ответа из других ресурсов.
+import time, requests
 
 url = 'https://api.binance.com/api/v3/ticker/price'
 
-# Передаем адрес получения данных, и какие параметры нам нужны
-responce = requests.get(url, params={'symbol': 'BTCUSDT'})
+bitcoin_prices = []
+for i in range(30):
+    responce = requests.get(url, params = {'symbol': 'BTCUSDT'})
+    content = responce.json()  # Забрали контент из запроса и конвертнули в словарь JSON/
+    price = float(content['price'])  # Забрали значение по ключу.
+    bitcoin_prices.append(price)  # Добавили его в список bitcoin_prices.
+    time.sleep(1)  # Создаем задержку в одну секунду.
 
-content = responce.content
+print(bitcoin_prices)
+print(len(bitcoin_prices))
+print(max(bitcoin_prices))
+print(min(bitcoin_prices))
 
-print(content)
-print(type(content))
-'''
-Outputs:
-b'{\n  "code": 0,\n  "msg": "Service unavailable from a restricted location according to \'b. Eligibility\' in https://www.binance.com/en/terms. Please contact customer service if you believe you received this message in error."\n}'
-<class 'bytes'>
-
-Ошибка из-за того, что сервера Replit в USA, а там нельзя делать такие запросы.
-В целом, на выходе должно быть следующее:
-
-'''
-
-content_2 = responce.json()  # конвертируем полученные данные в JSON.
-# Его тип - это словарь. А значит можно достать значение по ключу.
-price = content_2['price']  # получим значение, но это значение в JSON имеет тип str.
-price = float(content_2['price'])  # Поэтому лучше сразу конвертнуть в float.
-
-print(price)
-
+# Через 30 секунд выдаст результат.

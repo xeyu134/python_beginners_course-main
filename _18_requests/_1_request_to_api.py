@@ -12,6 +12,8 @@ b'{\n  "code": 0,\n  "msg": "Service unavailable from a restricted location acco
 
 Ошибка из-за того, что сервера Replit в USA, а там нельзя делать такие запросы.
 В целом, на выходе должно быть следующее:
+b'{"symbol":"BTCUSDT","price":"62021.11000000"}'
+<class 'bytes'>
 '''
 price_object = response.json()  # конвертируем полученные данные в JSON.
 # Его тип - это словарь. А значит можно достать значение по ключу.
@@ -19,7 +21,10 @@ price = float(price_object['price'])  # Получим значение, но э
 # Поэтому лучше сразу конвертнуть в float.
 print(price)
 
-import time
+'''
+Теперь пишем код, который будет каждую секунду идти в Binance, и добавлять price в список.
+'''
+import time  # Импортировать лучше всегда в начале кода
 
 bitcoin_prices = []
 for i in range(30):
